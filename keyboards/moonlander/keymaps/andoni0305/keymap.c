@@ -28,15 +28,30 @@ enum layers {
     MOUSE,  // media keys
 };
 
+enum combos {
+  JK_ESC,
+  TO_MOUSE
+  TO_DEFAULT,
+};
+
+const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM mouse_combo[] = {KC_RGHT, OSL(SYMB), COMBO_END};
+const uint16_t PROGMEM default_combo[] = {LCTL(KC_RGHT), KC_VOLU, COMBO_END};
+
+combo_t key_combos[] = {
+  [JK_ESC] = COMBO(jk_combo, KC_ESC),
+  [TO_MOUSE] = COMBO(mouse_combo, TO(MOUSE)),
+  [TO_DEFAULT] = COMBO(default_combo, TO(BASE)),
+};
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_moonlander(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,             XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    XXXXXXX,             XXXXXXX,    KC_Y,    KC_U,  KC_I,    KC_O,    KC_P,    XXXXXXX,
-        XXXXXXX, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    XXXXXXX,             XXXXXXX,    KC_H,    KC_J,  KC_K,    KC_L,    KC_SCLN, XXXXXXX,
-        XXXXXXX, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                                     KC_N,    KC_M,  KC_COMM, KC_DOT,  KC_SLSH, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX, KC_LEFT, KC_RGHT,          XXXXXXX,             XXXXXXX,         OSL(SYMB), KC_DOWN, XXXXXXX, XXXXXXX, XXXXXXX,
-                                             KC_SPC, XXXXXXX, XXXXXXX,             XXXXXXX, XXXXXXX, KC_ENT
+        XXXXXXX, XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX, XXXXXXX,             XXXXXXX, XXXXXXX, XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,           XXXXXXX,
+        XXXXXXX, KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,    XXXXXXX,             XXXXXXX,    KC_Y, KC_U,           KC_I,           KC_O,           KC_P,              XXXXXXX,
+        XXXXXXX, MOD_LALT(KC_A), MOD_LGUI(KC_S), MOD_LCTL(KC_D), MOD_LSFT(KC_F), KC_G,    XXXXXXX,             XXXXXXX,    KC_H, MOD_RSFT(KC_J), MOD_RCTL(KC_K), MOD_RGUI(KC_L), MOD_RALT(KC_SCLN), XXXXXXX,
+        XXXXXXX, KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                     KC_N, KC_M,           KC_COMM,        KC_DOT,         KC_SLSH,           XXXXXXX,
+        XXXXXXX, XXXXXXX,        XXXXXXX,        KC_LEFT,        LT(NUMB, KC_RGHT),       XXXXXXX,             XXXXXXX,          OSL(SYMB),      KC_DOWN,        XXXXXXX,        XXXXXXX,           XXXXXXX,
+                                                                 KC_SPC,         XXXXXXX, XXXXXXX,             XXXXXXX, XXXXXXX, KC_ENT
     ),
 
     [SYMB] = LAYOUT_moonlander(
@@ -57,32 +72,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______, _______, _______,            _______,_______, _______
     ),
 
-    [MOUSE] = LAYOUT_moonlander(
-        LED_LEVEL,_______,_______, _______, _______, _______, _______,           _______, _______, _______, _______, _______, _______, QK_BOOT,
-        _______, _______, _______, KC_MS_U, _______, _______, _______,           _______, _______, _______, _______, _______, _______, _______,
-        _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______,           _______, _______, _______, _______, _______, _______, KC_MPLY,
-        _______, _______, _______, _______, _______, _______,                             _______, _______, KC_MPRV, KC_MNXT, _______, _______,
-        _______, _______, _______, KC_BTN1, KC_BTN2,         _______,            _______,          KC_VOLU, KC_VOLD, KC_MUTE, _______, _______,
-                                            _______, _______, _______,           _______, _______, _______
+    [MOU_______, _______, _______, _______, _______, _______, _______,           _______, _______, _______, _______, _______, _______, _______,
+        _______, RGB_VAI, _______, KC_MS_U, _______, _______, _______,           _______, _______, KC_PGUP, _______, _______, _______, _______,
+        _______, RGB_VAD, KC_MPLY, KC_PGDN, _______, _______, _______,           _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
+        _______, _______, KC_F12,  _______, _______, _______,                             KC_MNXT, _______, KC_MPRV, KC_MNXT, _______, _______,
+        _______, _______, _______, LCTL(KC_LEFT), LCTL(KC_RGHT),_______,          _______,         KC_VOLU, KC_VOLD, KC_MUTE, _______, _______,
+                                            TO(BASE), _______, _______,          _______, KC_BTN2, KC_BTN1
     ),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (record->event.pressed) {
-        switch (keycode) {
-        case VRSN:
-            SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
-            return false;
-        }
-    }
+    // if (record->event.pressed) {
+    //     switch (keycode) {
+    //     case VRSN:
+    //         SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+    //         return false;
+    //     }
+    // }
     return true;
 }
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case SFT_T(KC_SPC):
-            return TAPPING_TERM + 1250;
-        case LT(1, KC_GRV):
-            return 130;
+        case MOD_RSFT(KC_J):
+        case MOD_LSFT(KC_F):
+            return TAPPING_TERM - 5;
+        case MOD_RCTL(KC_K):
+        case MOD_LCTL(KC_D):
+            return TAPPING_TERM + 10;
+        case MOD_LGUI(KC_S):
+        case MOD_RGUI(KC_L):
+        case MOD_RALT(KC_SCLN):
+        case MOD_LALT(KC_A):
+            return TAPPING_TERM + 45;
         default:
             return TAPPING_TERM;
     }
