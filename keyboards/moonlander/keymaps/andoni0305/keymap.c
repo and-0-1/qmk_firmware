@@ -30,7 +30,7 @@ enum layers {
 
 enum combos {
   JK_ESC,
-  TO_MOUSE
+  TO_MOUSE,
   TO_DEFAULT,
 };
 
@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_moonlander(
         XXXXXXX, XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX, XXXXXXX,             XXXXXXX, XXXXXXX, XXXXXXX,        XXXXXXX,        XXXXXXX,        XXXXXXX,           XXXXXXX,
         XXXXXXX, KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,    XXXXXXX,             XXXXXXX,    KC_Y, KC_U,           KC_I,           KC_O,           KC_P,              XXXXXXX,
-        XXXXXXX, MOD_LALT(KC_A), MOD_LGUI(KC_S), MOD_LCTL(KC_D), MOD_LSFT(KC_F), KC_G,    XXXXXXX,             XXXXXXX,    KC_H, MOD_RSFT(KC_J), MOD_RCTL(KC_K), MOD_RGUI(KC_L), MOD_RALT(KC_SCLN), XXXXXXX,
+        XXXXXXX, LALT_T(KC_A), LGUI_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F), KC_G,    XXXXXXX,             XXXXXXX,    KC_H, RSFT_T(KC_J), RCTL_T(KC_K), RGUI_T(KC_L), RALT_T(KC_SCLN), XXXXXXX,
         XXXXXXX, KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                     KC_N, KC_M,           KC_COMM,        KC_DOT,         KC_SLSH,           XXXXXXX,
         XXXXXXX, XXXXXXX,        XXXXXXX,        KC_LEFT,        LT(NUMB, KC_RGHT),       XXXXXXX,             XXXXXXX,          OSL(SYMB),      KC_DOWN,        XXXXXXX,        XXXXXXX,           XXXXXXX,
                                                                  KC_SPC,         XXXXXXX, XXXXXXX,             XXXXXXX, XXXXXXX, KC_ENT
@@ -72,7 +72,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______, _______, _______,            _______,_______, _______
     ),
 
-    [MOU_______, _______, _______, _______, _______, _______, _______,           _______, _______, _______, _______, _______, _______, _______,
+    [MOUSE] = LAYOUT_moonlander(
+        _______, _______, _______, _______, _______, _______, _______,           _______, _______, _______, _______, _______, _______, _______,
         _______, RGB_VAI, _______, KC_MS_U, _______, _______, _______,           _______, _______, KC_PGUP, _______, _______, _______, _______,
         _______, RGB_VAD, KC_MPLY, KC_PGDN, _______, _______, _______,           _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
         _______, _______, KC_F12,  _______, _______, _______,                             KC_MNXT, _______, KC_MPRV, KC_MNXT, _______, _______,
@@ -93,16 +94,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case MOD_RSFT(KC_J):
-        case MOD_LSFT(KC_F):
+        case RSFT_T(KC_J):
+        case LSFT_T(KC_F):
             return TAPPING_TERM - 5;
-        case MOD_RCTL(KC_K):
-        case MOD_LCTL(KC_D):
+        case RCTL_T(KC_K):
+        case LCTL_T(KC_D):
             return TAPPING_TERM + 10;
-        case MOD_LGUI(KC_S):
-        case MOD_RGUI(KC_L):
-        case MOD_RALT(KC_SCLN):
-        case MOD_LALT(KC_A):
+        case LGUI_T(KC_S):
+        case RGUI_T(KC_L):
+        case RALT_T(KC_SCLN):
+        case LALT_T(KC_A):
             return TAPPING_TERM + 45;
         default:
             return TAPPING_TERM;
