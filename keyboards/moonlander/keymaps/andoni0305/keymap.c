@@ -73,25 +73,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [MOUSE] = LAYOUT_moonlander(
-        _______, _______, _______, _______, _______, _______, _______,           _______, _______, _______, _______, _______, _______, _______,
-        _______, RGB_VAI, _______, KC_MS_U, _______, _______, _______,           _______, _______, KC_PGUP, _______, _______, _______, _______,
-        _______, RGB_VAD, KC_MPLY, KC_PGDN, _______, _______, _______,           _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
-        _______, _______, KC_F12,  _______, _______, _______,                             KC_MNXT, _______, KC_MPRV, KC_MNXT, _______, _______,
+        _______, _______, _______, _______, _______, _______,  _______,           _______, _______, _______, _______, _______, _______, _______,
+        _______, RGB_VAI,   _______, _______, _______, DT_UP,    _______,           _______, _______, KC_PGUP, _______, _______, _______, _______,
+        _______, RGB_VAD, KC_MPLY, KC_PGDN, _______, DT_PRNT, _______,           _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
+        _______, _______, KC_F12,  _______, _______, DT_DOWN,                             KC_MNXT, _______, KC_MPRV, KC_MNXT, _______, _______,
         _______, _______, _______, LCTL(KC_LEFT), LCTL(KC_RGHT),_______,          _______,         KC_VOLU, KC_VOLD, KC_MUTE, _______, _______,
                                             TO(BASE), _______, _______,          _______, KC_BTN2, KC_BTN1
     ),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    // if (record->event.pressed) {
-    //     switch (keycode) {
-    //     case VRSN:
-    //         SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
-    //         return false;
-    //     }
-    // }
     return true;
 }
+
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case RSFT_T(KC_J):
@@ -108,4 +102,22 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         default:
             return TAPPING_TERM;
     }
+}
+
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    switch(get_highest_layer(layer_state|default_layer_state)) {
+        case 3:
+            rgb_matrix_set_color_all(RGB_BLUE);
+            break;
+        case 2:
+            rgb_matrix_set_color_all(RGB_RED);
+            break;
+        case 1:
+            rgb_matrix_set_color_all(RGB_PURPLE);
+            break;
+        default:
+            rgb_matrix_set_color_all(RGB_WHITE);
+            break;
+    }
+    return false;
 }
