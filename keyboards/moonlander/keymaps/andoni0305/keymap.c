@@ -34,8 +34,8 @@ enum combos {
   TO_DEFAULT,
 };
 
-const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM mouse_combo[] = {KC_RGHT, OSL(SYMB), COMBO_END};
+const uint16_t PROGMEM jk_combo[] = {RSFT_T(KC_J), RCTL_T(KC_K), COMBO_END};
+const uint16_t PROGMEM mouse_combo[] = {LT(NUMB, KC_RGHT), OSL(SYMB), COMBO_END};
 const uint16_t PROGMEM default_combo[] = {LCTL(KC_RGHT), KC_VOLU, COMBO_END};
 
 combo_t key_combos[] = {
