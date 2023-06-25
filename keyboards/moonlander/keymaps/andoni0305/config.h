@@ -18,7 +18,7 @@
 
 #pragma once
 
-#define ORYX_CONFIGURATOR
+// #define ORYX_CONFIGURATOR
 #define TAPPING_TERM 130
 #define TAPPING_TERM_PER_KEY
 #define QUICK_TAP_TERM 0
