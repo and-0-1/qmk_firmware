@@ -13,7 +13,7 @@ AUDIO_ENABLE = yes          # Audio output
 AUDIO_DRIVER = dac_additive
 CUSTOM_MATRIX = lite
 SWAP_HANDS_ENABLE = yes
-RGB_MATRIX_ENABLE = yes
+RGB_MATRIX_ENABLE = no
 EEPROM_DRIVER = i2c
 
 #project specific files

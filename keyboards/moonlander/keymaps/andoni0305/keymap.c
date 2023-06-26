@@ -104,20 +104,20 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
-    switch(get_highest_layer(layer_state|default_layer_state)) {
-        case 3:
-            rgb_matrix_set_color_all(RGB_BLUE);
-            break;
-        case 2:
-            rgb_matrix_set_color_all(RGB_RED);
-            break;
-        case 1:
-            rgb_matrix_set_color_all(RGB_PURPLE);
-            break;
-        default:
-            rgb_matrix_set_color_all(RGB_WHITE);
-            break;
-    }
-    return false;
-}
+// bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+//     switch(get_highest_layer(layer_state|default_layer_state)) {
+//         case 3:
+//             rgb_matrix_set_color_all(RGB_BLUE);
+//             break;
+//         case 2:
+//             rgb_matrix_set_color_all(RGB_RED);
+//             break;
+//         case 1:
+//             rgb_matrix_set_color_all(RGB_PURPLE);
+//             break;
+//         default:
+//             rgb_matrix_set_color_all(RGB_WHITE);
+//             break;
+//     }
+//     return false;
+// }
