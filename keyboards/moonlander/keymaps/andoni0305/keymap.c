@@ -43,6 +43,7 @@ combo_t key_combos[] = {
   [TO_MOUSE] = COMBO(mouse_combo, TO(MOUSE)),
   [TO_DEFAULT] = COMBO(default_combo, TO(BASE)),
 };
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT_moonlander(
@@ -73,11 +74,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [MOUSE] = LAYOUT_moonlander(
-        _______, _______, _______, _______, _______, _______,  _______,           _______, _______, _______, _______, _______, _______, _______,
-        _______, RGB_VAI,   _______, _______, _______, DT_UP,    _______,           _______, _______, KC_PGUP, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______,  _______,          _______, _______, _______, _______, _______, _______, _______,
+        _______, RGB_VAI,   _______, _______, _______, DT_UP,    _______,        _______, _______, KC_PGUP, LGUI(KC_EQL), LGUI(KC_MINUS), _______, _______,
         _______, RGB_VAD, KC_MPLY, KC_PGDN, _______, DT_PRNT, _______,           _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
         _______, _______, KC_F12,  _______, _______, DT_DOWN,                             KC_MNXT, _______, KC_MPRV, KC_MNXT, _______, _______,
-        _______, _______, _______, LCTL(KC_LEFT), LCTL(KC_RGHT),_______,          _______,         KC_VOLU, KC_VOLD, KC_MUTE, _______, _______,
+        _______, _______, _______, LCTL(KC_LEFT), LCTL(KC_RGHT),_______,         _______,         KC_VOLU, KC_VOLD, KC_MUTE, _______, _______,
                                             TO(BASE), _______, _______,          _______, KC_BTN2, KC_BTN1
     ),
 };
@@ -98,7 +99,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case RGUI_T(KC_L):
         case RALT_T(KC_SCLN):
         case LALT_T(KC_A):
-            return TAPPING_TERM + 45;
+            return TAPPING_TERM + 40;
         default:
             return TAPPING_TERM;
     }
