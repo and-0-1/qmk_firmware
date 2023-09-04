@@ -78,10 +78,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [MOUSE] = LAYOUT_moonlander(
         _______, _______, _______, _______, _______, _______,  _______,          _______, _______, _______, _______, _______, _______, _______,
-        _______, RGB_VAI,   _______, _______, KC_VOLU, DT_UP,    _______,        _______, _______, KC_PGUP, LGUI(KC_EQL), LGUI(KC_MINUS), _______, _______,
+        _______, RGB_VAI,   _______, _______, KC_VOLU, DT_UP,  _______,        _______, _______, KC_PGUP, LGUI(KC_EQL), LGUI(KC_MINUS), KC_MPRV, _______,
         _______, RGB_VAD, KC_MPLY, KC_PGDN, KC_VOLD, DT_PRNT, _______,           _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
-        _______, _______, KC_F12,  _______, _______, DT_DOWN,                             KC_MNXT, _______, KC_MPRV, KC_MNXT, _______, _______,
-        _______, _______, _______, LCTL(KC_LEFT), LCTL(KC_RGHT),_______,         _______,         KC_BTN1, KC_BTN2, KC_MUTE, _______, _______,
+        _______, _______, KC_F12,  LGUI(KC_C), LGUI(KC_V), DT_DOWN,                         KC_MNXT, KC_MUTE, _______, _______, _______, _______,
+        _______, _______, _______, LCTL(KC_LEFT), LCTL(KC_RGHT),_______,         _______,         KC_BTN1, KC_BTN2, _______, _______, _______,
                                             TO(BASE), _______, _______,          _______, _______, _______
     ),
 };
@@ -94,7 +94,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case RSFT_T(KC_J):
         case LSFT_T(KC_F):
-            return TAPPING_TERM - 5;
+            return TAPPING_TERM - 10;
         case RCTL_T(KC_K):
         case LCTL_T(KC_D):
             return TAPPING_TERM + 10;
@@ -102,7 +102,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case RGUI_T(KC_L):
         case RALT_T(KC_SCLN):
         case LALT_T(KC_A):
-            return TAPPING_TERM + 40;
+            return TAPPING_TERM + 30;
         default:
             return TAPPING_TERM;
     }
