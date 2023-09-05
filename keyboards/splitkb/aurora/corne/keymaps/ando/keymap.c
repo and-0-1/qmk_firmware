@@ -4,6 +4,7 @@ enum layers {
     _BASE = 0,
     _SYMB = 1,
     _NUMB = 2,
+    _MOUSE = 3,
 };
 
 enum combos {
@@ -14,14 +15,14 @@ enum combos {
 };
 
 const uint16_t PROGMEM jk_combo[] = {RSFT_T(KC_J), RCTL_T(KC_K), COMBO_END};
-// const uint16_t PROGMEM mouse_combo[] = {LT(NUMB, KC_RGHT), OSL(SYMB), COMBO_END};
-// const uint16_t PROGMEM mouse_esc_combo[] = {KC_MS_D, KC_MS_U, COMBO_END};
+const uint16_t PROGMEM mouse_combo[] = {LT(_NUMB, KC_RGHT), OSL(_SYMB), COMBO_END};
+const uint16_t PROGMEM mouse_esc_combo[] = {KC_MS_D, KC_MS_U, COMBO_END};
 const uint16_t PROGMEM default_combo[] = {LCTL(KC_RGHT), KC_BTN1, COMBO_END};
 
 combo_t key_combos[] = {
     [JK_ESC] = COMBO(jk_combo, KC_ESC),
-    // [MOUSE_ESC] = COMBO(mouse_esc_combo, TO(_BASE)),
-    // [TO_MOUSE] = COMBO(mouse_combo, TO(MOUSE)),
+    [MOUSE_ESC] = COMBO(mouse_esc_combo, TO(_BASE)),
+    [TO_MOUSE] = COMBO(mouse_combo, TO(_MOUSE)),
     [TO_DEFAULT] = COMBO(default_combo, TO(_BASE)),
 };
 
@@ -44,5 +45,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          _______,  _______, _______, _______,  _______,                     KC_0,      KC_4,    KC_5,    KC_6,    KC_BSPC,
          _______, _______, _______, _______,   _______,                     _______,     KC_1,    KC_2,    KC_3,    KC_TAB,
                                     _______, _______, _______,      _______,_______, _______
+    ),
+
+    [_MOUSE] = LAYOUT_split_3x5_3(
+         RGB_VAI,   _______, _______, KC_VOLU, DT_UP,                       _______, KC_PGUP, LGUI(KC_EQL), LGUI(KC_MINUS), KC_MPRV,
+         RGB_VAD, KC_MPLY, KC_PGDN, KC_VOLD, DT_PRNT,                       KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______,
+         _______, KC_F12,  LGUI(KC_C), LGUI(KC_V), DT_DOWN,                 KC_MNXT, KC_MUTE, _______, _______, _______,
+                            LCTL(KC_LEFT), LCTL(KC_RGHT),TO(_BASE),  _______, KC_BTN1, KC_BTN2
     ),
 };
