@@ -48,10 +48,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_MOUSE] = LAYOUT_split_3x5_3(
-         RGB_VAI,   _______, _______, KC_VOLU, DT_UP,                       _______, KC_PGUP, LGUI(KC_EQL), LGUI(KC_MINUS), KC_MPRV,
-         RGB_VAD, KC_MPLY, KC_PGDN, KC_VOLD, DT_PRNT,                       KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______,
-         _______, KC_F12,  LGUI(KC_C), LGUI(KC_V), DT_DOWN,                 KC_MNXT, KC_MUTE, _______, _______, _______,
-                            LCTL(KC_LEFT), LCTL(KC_RGHT),TO(_BASE),  _______, KC_BTN1, KC_BTN2
+         _______,   _______, _______, KC_VOLU, DT_UP,                       _______, _______, LGUI(KC_EQL), LGUI(KC_MINUS), KC_MPRV,
+         _______, KC_MPLY, _______, KC_VOLD, DT_PRNT,                       _______, _______, _______, _______, _______,
+         _______, KC_F12,  _______, _______, DT_DOWN,                       KC_MNXT, KC_MUTE, _______, _______, _______,
+                            _______, _______,TO(_BASE),             _______, _______, _______
     ),
 };
 
