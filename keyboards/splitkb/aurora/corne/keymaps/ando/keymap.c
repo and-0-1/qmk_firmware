@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     _______, TO(_BASE), _______,    _______, TO(_BASE), _______
     ),
     [_NUMB] = LAYOUT_split_3x5_3(
-         _______,   _______, _______, _______, _______,                     CW_TOGG,   KC_7,    KC_8,    KC_9,    _______,
+         _______,   _______, _______, _______, _______,                     CW_TOGG,   KC_7,    KC_8,    KC_9,    KC_BSLS,
          _______,  _______, _______, _______,  _______,                     KC_0,      KC_4,    KC_5,    KC_6,    KC_BSPC,
          _______, _______, _______, _______,   _______,                     _______,     KC_1,    KC_2,    KC_3,    KC_TAB,
                                     _______, _______, _______,      _______,_______, _______
@@ -49,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_MOUSE] = LAYOUT_split_3x5_3(
          _______,   _______, _______, KC_VOLU, DT_UP,                       _______, _______, LGUI(KC_EQL), LGUI(KC_MINUS), KC_MPRV,
-         _______, KC_MPLY, _______, KC_VOLD, DT_PRNT,                       _______, _______, _______, _______, _______,
+         _______, KC_MPLY, _______, KC_VOLD, DT_PRNT,                       _______, TO(_BASE), TO(_BASE), _______, _______,
          _______, KC_F12,  _______, _______, DT_DOWN,                       KC_MNXT, KC_MUTE, _______, _______, _______,
                             _______, _______,TO(_BASE),             _______, _______, _______
     ),
