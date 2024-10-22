@@ -7,12 +7,6 @@ enum layers {
     _MOUSE = 3,
 };
 
-enum combos {
-    JK_ESC,
-    TO_MOUSE,
-    TO_DEFAULT,
-    MOUSE_ESC
-};
 
 const uint16_t PROGMEM jk_combo[] = {RSFT_T(KC_J), RCTL_T(KC_K), COMBO_END};
 const uint16_t PROGMEM mouse_combo[] = {LT(_NUMB, KC_RGHT), OSL(_SYMB), COMBO_END};
@@ -20,10 +14,10 @@ const uint16_t PROGMEM mouse_esc_combo[] = {KC_MS_D, KC_MS_U, COMBO_END};
 const uint16_t PROGMEM default_combo[] = {LCTL(KC_RGHT), KC_BTN1, COMBO_END};
 
 combo_t key_combos[] = {
-    [JK_ESC] = COMBO(jk_combo, KC_ESC),
-    [MOUSE_ESC] = COMBO(mouse_esc_combo, TO(_BASE)),
-    [TO_MOUSE] = COMBO(mouse_combo, TO(_MOUSE)),
-    [TO_DEFAULT] = COMBO(default_combo, TO(_BASE)),
+    COMBO(jk_combo, KC_ESC),
+    COMBO(mouse_esc_combo, TO(_BASE)),
+    COMBO(mouse_combo, TO(_MOUSE)),
+    COMBO(default_combo, TO(_BASE)),
 };
 
 // clang-format off
