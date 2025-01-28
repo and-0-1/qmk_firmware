@@ -49,15 +49,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LT(_NUMB, KC_RGHT):
-        case OSL(_SYMB):
-            return TAPPING_TERM - 30;
-        case RSFT_T(KC_J):
-        case LSFT_T(KC_F):
-            return TAPPING_TERM - 20;
-        default:
-            return TAPPING_TERM;
-    }
-}
+/* uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) { */
+/*     switch (keycode) { */
+/*         case LT(_NUMB, KC_RGHT): */
+/*         case OSL(_SYMB): */
+/*             return TAPPING_TERM - 30; */
+/*         case RSFT_T(KC_J): */
+/*         case LSFT_T(KC_F): */
+/*             return TAPPING_TERM - 20; */
+/*         default: */
+/*             return TAPPING_TERM; */
+/*     } */
+/* } */
