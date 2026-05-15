@@ -4,7 +4,7 @@ enum layers {
     _BASE = 0,
     _SYMB = 1,
     _NUMB = 2,
-    _MOUSE = 3,
+    _MEDIA = 3,
 };
 
 
@@ -23,12 +23,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 const uint16_t PROGMEM jk_combo[] = {RSFT_T(KC_J), RCTL_T(KC_K), COMBO_END};
-const uint16_t PROGMEM mouse_combo[] = {LT(_NUMB, KC_RGHT), OSL(_SYMB), COMBO_END};
+const uint16_t PROGMEM to_media_combo[] = {LT(_NUMB, KC_RGHT), OSL(_SYMB), COMBO_END};
 const uint16_t PROGMEM to_base_combo[] = {NO_OP_LEFT, NO_OP_RIGHT, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(jk_combo, KC_ESC),
-    COMBO(mouse_combo, TO(_MOUSE)),
+    COMBO(to_media_combo, TO(_MEDIA)),
     COMBO(to_base_combo, TO(_BASE)),
 };
 
@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                     _______, _______, _______,      _______,_______, _______
     ),
 
-    [_MOUSE] = LAYOUT_split_3x5_3(
+    [_MEDIA] = LAYOUT_split_3x5_3(
          _______,   _______, _______, KC_VOLU, DT_UP,                       _______, _______,     LGUI(KC_EQL), LGUI(KC_MINUS), KC_MPRV,
          _______, KC_MPLY, _______, KC_VOLD, DT_PRNT,                       _______, NO_OP_LEFT,  NO_OP_RIGHT,  _______,        _______,
          _______, KC_F12,  _______, _______, DT_DOWN,                       KC_MNXT, KC_MUTE,     _______,      _______,        _______,
