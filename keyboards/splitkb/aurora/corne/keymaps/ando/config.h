@@ -1,6 +1,6 @@
 #pragma once
 #define CHORDAL_HOLD
-#define TAPPING_TERM 180
+#define TAPPING_TERM 130
 #define PERMISSIVE_HOLD
 #define SPECULATIVE_HOLD
 #define QUICK_TAP_TERM 0
