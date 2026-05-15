@@ -52,16 +52,3 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
          'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R',
                     'L', 'L', 'L', 'R', 'R', 'R'
     );
-
-/* uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) { */
-/*     switch (keycode) { */
-/*         case LT(_NUMB, KC_RGHT): */
-/*         case OSL(_SYMB): */
-/*             return TAPPING_TERM - 30; */
-/*         case RSFT_T(KC_J): */
-/*         case LSFT_T(KC_F): */
-/*             return TAPPING_TERM - 20; */
-/*         default: */
-/*             return TAPPING_TERM; */
-/*     } */
-/* } */
